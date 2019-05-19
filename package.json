@@ -1,0 +1,23 @@
+{
+  "name": "cli-store",
+  "version": "1.0.0",
+  "description": "NodeJs & MySql",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusColunga/CLI-Store.git"
+  },
+  "author": "Jesus Colunga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesusColunga/CLI-Store/issues"
+  },
+  "homepage": "https://github.com/JesusColunga/CLI-Store#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "myql": "^1.0.0"
+  }
+}
