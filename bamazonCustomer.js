@@ -1,5 +1,5 @@
 // bamazonCustomer.js
-// 18/May/2019
+// 20/May/2019
 
 //============================================================================ Variables
 var inquirer = require("inquirer");
@@ -17,19 +17,43 @@ var q1 = [{
       choices: ["Place an order of these products", "Exit"],
       name:    "action"
 }];
+var q2 = [
+    {type:    "number",
+     message: "Please type the 'id' of the product you want to buy:",
+     name:    "q2Id"},
+    {type:    "number",
+     message: "How many units of the product would you like to buy?",
+     name:    "q2Qty"}
+    ];
+var fs = require("fs");
+var s = "";   // String for general use.
+
 
 
 //============================================================================ Functions
+function writeLog (strg) {
+    fs.appendFile("log.txt", 
+                  strg, 
+                  function(err) {
+                    if (err) {
+                        return console.log("Error writing the log file:", err);
+                    };
+                  }
+                 );
+};
+
+// - - - - - - - - - - - - - - 
 function actionOrder(){};
 
 // - - - - - - - - - - - - - - Process Options
 function processOptions(){
     inquirer
-      .prompt (q1)
+      .prompt (q2)
       .then (
         function (resp) {
-            if (resp.action === "Place an order of these products") { actionOrder() };
-            if (resp.action === "Exit"                            ) { connection.end(); };
+            console.log("Respuestas:", resp.q2Id, resp.q2Qty);
+
+            connection.end();
         }
       );
 };
@@ -38,33 +62,36 @@ function showProducts(item, index){
     var id    = "" + item.item_id;
     var name  = item.product_name;
     var price = "" + item.price;
-    console.log("|| " + 
-                id.padStart(3)     + "  ||  " + 
-                name.padEnd(40)    + "  ||  " + 
-                price.padStart(6)  + "  ||  ");
+    s += "\n|| "            + 
+         id.padStart(3)     + "  ||  " + 
+         name.padEnd(40)    + "  ||  " + 
+         price.padStart(6)  + "  ||  ";
 };
 
 function showTitles(){
-    console.log("=".repeat(68));
-    console.log("||  id  ||" +
-                " ".repeat(16) +
-                "product" +
-                " ".repeat(21) +
-                "||   price  ||");
-    console.log("=".repeat(68));
+    return "\n"             + 
+           "=".repeat(68)   +
+           "\n||  id  ||"   +
+           " ".repeat(16)   +
+           "product"        +
+           " ".repeat(21)   +
+           "||   price  ||" +
+           "\n"             +
+           "=".repeat(68);
 };
 
 function showCatalog(res){
-    showTitles();
+    var strCat = showTitles();
     res.forEach(showProducts);
-    console.log("=".repeat(68));
+    strCat += s + "\n" + "=".repeat(68) + "\n";
+    console.log(strCat);
+    writeLog(strCat);
 };
 
 function processProducts(){
     var query = connection.query(
         "SELECT item_id, product_name, price FROM products",
         function(err, res) {
-          //console.log("res:", res, "err:", err);
           showCatalog(res);
           processOptions();
         }
@@ -74,7 +101,7 @@ function processProducts(){
 function connectDb() {
     connection.connect(function(err) {
         if (err) throw err;
-        console.log("connected as id " + connection.threadId + "\n");
+        writeLog("connected as id " + connection.threadId + "\n");
         processProducts();
       });
 };
