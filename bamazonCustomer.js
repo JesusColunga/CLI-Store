@@ -43,19 +43,38 @@ function writeLog (strg) {
 };
 
 // - - - - - - - - - - - - - - 
-function actionOrder(){};
+function processExistenceValidate (resp, res){
+    var orderQty = parseFloat(resp.q2Qty);
+    if (res.length <= 0) {
+        console.log("Error identifing the product Id you typed.");
+    } else {
+        if (orderQty <= 0) {
+            console.log("Quantity must be grater than cero.");
+        } else
+        if (parseFloat(res[0].stock_quantity) >= orderQty ) {
+            console.log("procesar orden");
+        } else {
+            console.log("There is Insufficient Quantity of the product for your request!");
+        };
+    };
+    connection.end();
+};
 
-// - - - - - - - - - - - - - - Process Options
-function processOptions(){
-    inquirer
-      .prompt (q2)
-      .then (
-        function (resp) {
-            console.log("Respuestas:", resp.q2Id, resp.q2Qty);
-
-            connection.end();
+function checkExistence(resp){
+    var query = connection.query(
+        "SELECT * FROM products WHERE ?",
+        {item_id: resp.q2Id},
+        function(err, reg) {
+          console.log("reg:", reg);
+          processExistenceValidate (resp, reg);
         }
       );
+};
+
+function askOrder(){
+    inquirer
+      .prompt (q2)
+      .then ( function (resp) { checkExistence(resp); } );
 };
 
 function showProducts(item, index){
@@ -93,7 +112,7 @@ function processProducts(){
         "SELECT item_id, product_name, price FROM products",
         function(err, res) {
           showCatalog(res);
-          processOptions();
+          askOrder();
         }
       );
 };
@@ -109,3 +128,14 @@ function connectDb() {
 
 //============================================================================ Execution
 connectDb();
+
+/*
+lo que sigue:
+7. Once the customer has placed the order,
+   your application should check if your store has enough of the product to meet the customer's request.
+   
+   - If not, the app should log a phrase like `Insufficient quantity!`, and then prevent the order from going through.
+8. However, if your store _does_ have enough of the product, you should fulfill the customer's order.
+   - This means updating the SQL database to reflect the remaining quantity.
+   - Once the update goes through, show the customer the total cost of their purchase.
+   */
