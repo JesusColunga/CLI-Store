@@ -1,5 +1,5 @@
 // bamazonCustomer.js
-// 20/May/2019
+// 22/May/2019
 
 //============================================================================ Variables
 var inquirer = require("inquirer");
@@ -43,6 +43,44 @@ function writeLog (strg) {
 };
 
 // - - - - - - - - - - - - - - 
+function processUpdateDb(resp, res){};
+
+function processSubtractQtySold(resp, res){
+/*
+    var query = connection.query(
+        "SELECT * FROM products WHERE ?",
+        {item_id: resp.q2Id},
+        function(err, reg) {
+          processExistenceValidate (resp, reg);
+        }
+      );
+
+*/
+    console.log("resp:", resp, "\nres:", res);
+    connection.end();
+    /*
+However, if your store _does_ have enough of the product,
+you should fulfill the customer's order.
+- This means updating the SQL database to reflect the remaining quantity.
+- Once the update goes through, show the customer the total cost of their purchase.
+    */
+
+};
+
+function processCustomerOrder (resp, res){
+    var st = "\nProcessing your order:" +
+             "\nQuantity:    "          + 
+             resp.q2Qty                 +
+             "\nProduct Id:  "          +
+             resp.q2Id                  +
+             "\nDescription: "          +
+             res[0].product_name        +
+             "\n";
+    console.log(st);
+    writeLog(st);
+    processSubtractQtySold(resp, res);
+};
+
 function processExistenceValidate (resp, res){
     var orderQty = parseFloat(resp.q2Qty);
     if (res.length <= 0) {
@@ -52,12 +90,11 @@ function processExistenceValidate (resp, res){
             console.log("Quantity must be grater than cero.");
         } else
         if (parseFloat(res[0].stock_quantity) >= orderQty ) {
-            console.log("procesar orden");
+            processCustomerOrder(resp, res);
         } else {
             console.log("There is Insufficient Quantity of the product for your request!");
         };
     };
-    connection.end();
 };
 
 function checkExistence(resp){
@@ -65,7 +102,6 @@ function checkExistence(resp){
         "SELECT * FROM products WHERE ?",
         {item_id: resp.q2Id},
         function(err, reg) {
-          console.log("reg:", reg);
           processExistenceValidate (resp, reg);
         }
       );

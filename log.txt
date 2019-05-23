@@ -542,3 +542,145 @@ connected as id 45
 ||   9  ||  Impresora Konica                          ||   19741  ||  
 ||  10  ||  Cafetera                                  ||    3456  ||  
 ====================================================================
+connected as id 4
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+connected as id 5
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+connected as id 6
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+connected as id 7
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+/nProcessing your order:/nQuantity:    1/nProduct Id:  1/nDescription: Camara fotograficaconnected as id 8
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+connected as id 9
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+
+Processing your order:
+Quantity:    2
+Product Id:  1
+Description: Camara fotograficaconnected as id 10
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+
+Processing your order:
+Quantity:    3
+Product Id:  1
+Description: Camara fotografica
+connected as id 11
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+====================================================================
+
+Processing your order:
+Quantity:    3
+Product Id:  2
+Description: Camara de video
