@@ -1,6 +1,7 @@
 // bamazonCustomer.js
-// 22/May/2019
+// 23/May/2019
 
+// GLOBAL VARIABLES
 //============================================================================ Variables
 var inquirer = require("inquirer");
 var mysql = require("mysql");
@@ -28,9 +29,18 @@ var q2 = [
 var fs = require("fs");
 var s = "";   // String for general use.
 
+// OBJECTS
+// =======================================================================================
+var order = {
+    item_id        : "",
+    orderedQty     : 0,
+    product_name   : "",
+    price          : 0,
+    stock_quantity : 0
+};
 
-
-//============================================================================ Functions
+// Functions
+//============================================================================ 
 function writeLog (strg) {
     fs.appendFile("log.txt", 
                   strg, 
@@ -43,66 +53,69 @@ function writeLog (strg) {
 };
 
 // - - - - - - - - - - - - - - 
-function processUpdateDb(resp, res){};
-
-function processSubtractQtySold(resp, res){
-/*
-    var query = connection.query(
-        "SELECT * FROM products WHERE ?",
-        {item_id: resp.q2Id},
-        function(err, reg) {
-          processExistenceValidate (resp, reg);
-        }
-      );
-
-*/
-    console.log("resp:", resp, "\nres:", res);
+function processUpdatedDb(resp){
+    if (resp !== undefined) {
+        console.log(resp.changedRows + " product updated!\n");
+        console.log(
+            "\nTotal amount of your order: $" + 
+            (order.orderedQty * order.price)
+        );
+    };
     connection.end();
-    /*
-However, if your store _does_ have enough of the product,
-you should fulfill the customer's order.
-- This means updating the SQL database to reflect the remaining quantity.
-- Once the update goes through, show the customer the total cost of their purchase.
-    */
-
 };
 
-function processCustomerOrder (resp, res){
+function processSubtractQtySold(){
+	var query = connection.query(
+		"UPDATE products SET ? WHERE ?",
+		[ {stock_quantity: order.stock_quantity - order.orderedQty},
+		  {item_id: order.item_id} ],
+		function (err, resp) {
+            if (err) throw err;
+            processUpdatedDb(resp);
+		}
+	);
+};
+
+function processCustomerOrder (){
     var st = "\nProcessing your order:" +
              "\nQuantity:    "          + 
-             resp.q2Qty                 +
+             order.orderedQty           +
              "\nProduct Id:  "          +
-             resp.q2Id                  +
+             order.item_id              +
              "\nDescription: "          +
-             res[0].product_name        +
+             order.product_name         +
              "\n";
     console.log(st);
     writeLog(st);
-    processSubtractQtySold(resp, res);
+    processSubtractQtySold();
 };
 
-function processExistenceValidate (resp, res){
-    var orderQty = parseFloat(resp.q2Qty);
-    if (res.length <= 0) {
+function processExistenceValidate (reg){
+    if (reg.length <= 0) {
         console.log("Error identifing the product Id you typed.");
     } else {
-        if (orderQty <= 0) {
+        order.product_name = reg[0].product_name;
+        if (order.orderedQty <= 0) {
             console.log("Quantity must be grater than cero.");
-        } else
-        if (parseFloat(res[0].stock_quantity) >= orderQty ) {
-            processCustomerOrder(resp, res);
         } else {
-            console.log("There is Insufficient Quantity of the product for your request!");
-        };
+            order.stock_quantity = parseFloat(reg[0].stock_quantity);
+            order.price = parseFloat(reg[0].price);
+            if (order.stock_quantity >= order.orderedQty) {
+                processCustomerOrder();
+            } else {
+                console.log("There is Insufficient Quantity of the product for your request!");
+            };
+        }
     };
 };
 
-function checkExistence(resp){
+function checkExistence(){
     var query = connection.query(
         "SELECT * FROM products WHERE ?",
-        {item_id: resp.q2Id},
+        {item_id: order.item_id},
         function(err, reg) {
-          processExistenceValidate (resp, reg);
+            if (err) throw err;
+            processExistenceValidate (reg);
         }
       );
 };
@@ -110,7 +123,11 @@ function checkExistence(resp){
 function askOrder(){
     inquirer
       .prompt (q2)
-      .then ( function (resp) { checkExistence(resp); } );
+      .then ( function (resp) { 
+          order.item_id = resp.q2Id;
+          order.orderedQty = parseFloat(resp.q2Qty);
+          checkExistence(); 
+        } );
 };
 
 function showProducts(item, index){
@@ -147,8 +164,9 @@ function processProducts(){
     var query = connection.query(
         "SELECT item_id, product_name, price FROM products",
         function(err, res) {
-          showCatalog(res);
-          askOrder();
+            if (err) throw err;  
+            showCatalog(res);
+            askOrder();
         }
       );
 };
@@ -161,17 +179,19 @@ function connectDb() {
       });
 };
 
-
-//============================================================================ Execution
+// Execution
+//============================================================================
 connectDb();
 
+
 /*
-lo que sigue:
-7. Once the customer has placed the order,
-   your application should check if your store has enough of the product to meet the customer's request.
-   
-   - If not, the app should log a phrase like `Insufficient quantity!`, and then prevent the order from going through.
-8. However, if your store _does_ have enough of the product, you should fulfill the customer's order.
-   - This means updating the SQL database to reflect the remaining quantity.
-   - Once the update goes through, show the customer the total cost of their purchase.
-   */
+USE bamazon;
+
+CREATE TABLE products (
+  item_id         INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  product_name    VARCHAR(200)  NULL,
+  department_name VARCHAR(100)  NULL,
+  price           DECIMAL(10,2) NULL,
+  stock_quantity  DECIMAL(10,2) NULL
+);
+*/
