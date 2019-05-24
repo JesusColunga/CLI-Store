@@ -25,6 +25,11 @@ var menuOps = [{
 var fs = require("fs");
 var s = "";   // String for general use.
 
+// OBJECTS
+// =======================================================================================
+var info = {
+    menuOpt        : ""
+};
 
 // Functions
 //============================================================================ 
@@ -39,7 +44,7 @@ function writeLog (strg) {
                  );
 };
 
-// - - - - - - - - - - - - - - 
+// - - - - - - - - - - - - - - Common to some processes
 function showProducts(item, index){
     var id    = "" + item.item_id;
     var name  = item.product_name;
@@ -73,9 +78,19 @@ function showCatalog(resp){
     writeLog(strCat);
     connection.end();
 };
+// - - - - - - - - - - - - - - View Low Inventory
+function processLowInv(){
+    var query = connection.query(
+        "SELECT item_id, product_name, price, stock_quantity FROM products WHERE stock_quantity < 5",
+        function(err, resp) {
+            if (err) throw err;  
+            showCatalog(resp);
+        }
+      );
+};
 
+// - - - - - - - - - - - - - - View Products for Sale
 function processProducts(){
-//item IDs, names, prices, and quantities.    
     var query = connection.query(
         "SELECT item_id, product_name, price, stock_quantity FROM products",
         function(err, resp) {
@@ -85,20 +100,31 @@ function processProducts(){
       );
 };
 
+// - - - - - - - - - - - - - - Menu
+function checkMenuOption () {
+    if (info.menuOpt === "View Products for Sale") processProducts(); else
+    if (info.menuOpt === "View Low Inventory"    ) processLowInv();   else
+    if (info.menuOpt === "Add to Inventory"      ) {} else
+    if (info.menuOpt === "Add New Product"       ) {}; 
+};
+
 function connectDb() {
     connection.connect(function(err) {
         if (err) throw err;
         writeLog("connected as id " + connection.threadId + "\n");
-        processProducts();
+        checkMenuOption();
       });
 };
 
 function processMenu(){
     inquirer
       .prompt (menuOps)
-      .then ( function (resp) { 
-                 connectDb();
-              } );
+      .then ( function (resp) {
+          info.menuOpt = resp.action;
+          if (info.menuOpt !== "Exit"){
+                connectDb();
+              };
+       });
 };
 
 // Execution
