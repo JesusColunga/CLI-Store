@@ -1,5 +1,5 @@
 // bamazonCustomer.js
-// 23/May/2019
+// 24/May/2019
 
 // GLOBAL VARIABLES
 //============================================================================ Variables
@@ -42,7 +42,7 @@ var order = {
 // Functions
 //============================================================================ 
 function writeLog (strg) {
-    fs.appendFile("log.txt", 
+    fs.appendFile("logCst.txt", 
                   strg, 
                   function(err) {
                     if (err) {
@@ -92,10 +92,12 @@ function processCustomerOrder (){
 
 function processExistenceValidate (reg){
     if (reg.length <= 0) {
+        connection.end();
         console.log("Error identifing the product Id you typed.");
     } else {
         order.product_name = reg[0].product_name;
         if (order.orderedQty <= 0) {
+            connection.end();
             console.log("Quantity must be grater than cero.");
         } else {
             order.stock_quantity = parseFloat(reg[0].stock_quantity);
@@ -103,6 +105,7 @@ function processExistenceValidate (reg){
             if (order.stock_quantity >= order.orderedQty) {
                 processCustomerOrder();
             } else {
+                connection.end();
                 console.log("There is Insufficient Quantity of the product for your request!");
             };
         }
@@ -125,8 +128,14 @@ function askOrder(){
       .prompt (q2)
       .then ( function (resp) { 
           order.item_id = resp.q2Id;
-          order.orderedQty = parseFloat(resp.q2Qty);
-          checkExistence(); 
+          if ( !isNaN(resp.q2Qty) ) {
+            order.orderedQty = parseFloat(resp.q2Qty);
+            checkExistence(); 
+          } else {
+              console.log("Not a valid quantity.");
+              writeLog("Not a valid quantity.");
+              connection.end();
+          }
         } );
 };
 
