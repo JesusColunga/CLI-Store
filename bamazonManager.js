@@ -49,7 +49,7 @@ function showProducts(item, index){
          id.padStart(3)     + "  ||  " + 
          name.padEnd(40)    + "  ||  " + 
          price.padStart(6)  + "  ||  " +
-         stock.padStart(5)  + "  ||  ";
+         stock.padStart(5)  + "  ||";
 };
 
 function showTitles(){
@@ -60,7 +60,7 @@ function showTitles(){
            "product"        +
            " ".repeat(21)   +
            "||   price  ||" +
-           "  stock   ||"   +
+           "  stock  ||"    +
            "\n"             +
            "=".repeat(79);
 };
