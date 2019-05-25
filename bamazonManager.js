@@ -1,5 +1,5 @@
 // bamazonManager.js
-// 24/May/2019
+// 25/May/2019
 
 // GLOBAL VARIABLES
 //============================================================================ Variables
@@ -30,6 +30,20 @@ var q1 = [
      message: "How many units of the product would you like to add?",
      name:    "q1Qty"}
     ];
+var q2 = [
+    {type:    "input",
+     message: "Please type the product name to add:",
+     name:    "q2ProdName"},
+     {type:    "input",
+     message: "Type the product department:",
+     name:    "q2Dep"},
+     {type:    "number",
+     message: "Type the product price:",
+     name:    "q2Price"},
+     {type:    "number",
+     message: "Stock quantity:",
+     name:    "q2Qty"},
+    ];
 var fs = require("fs");
 var s = "";   // String for general use.
 
@@ -39,7 +53,11 @@ var info = {
     menuOpt        : "",
     q1Id           : "",
     q1Qty          : 0,
-    stock_quantity : 0
+    stock_quantity : 0,
+    q2ProdName     : "",
+    q2Dep          : "",
+    q2Price        : 0,
+    q2Qty          : 0
 };
 
 // Functions
@@ -54,10 +72,55 @@ function writeLog (strg) {
                   }
                  );
 };
+// - - - - - - - - - - - - - - Add New Product
+function queryNewProd(){
+    var query = connection.query(
+        // agregar el producto nuevo - "UPDATE products SET ? WHERE ?",
+        "INSERT INTO products SET ?",
+		{ product_name    : info.q2ProdName,
+          department_name : info.q2Dep,
+          price           : info.q2Price,
+          stock_quantity  : info.q2Qty
+        },
+        function(err, reg) {
+            if (err) throw err;
+            console.log("\nProduct added.\n");
+            writeLog("\nProduct added.\n");
+            processProducts();
+        }
+      );
+};
+
+function processNewProd(){
+    inquirer
+      .prompt (q2)
+      .then ( function (resp) { 
+          info.q2ProdName = resp.q2ProdName;
+          info.q2Dep      = resp.q2Dep;
+
+          if ( !isNaN(resp.q2Price) ) {
+            info.q2Price = parseFloat(resp.q2Price);
+          } else {
+              console.log("Not a valid price.");
+              writeLog("Not a valid price.");
+              connection.end();
+              return;
+          };
+
+          if ( !isNaN(resp.q2Qty) ) {
+            info.q2Qty = parseFloat(resp.q2Qty);
+          } else {
+              console.log("Not a valid quantity.");
+              writeLog("Not a valid quantity.");
+              connection.end();
+              return;
+          };
+
+          queryNewProd();
+        } );
+};
+
 // - - - - - - - - - - - - - - Add to Inventory
-//If a manager selects `Add to Inventory`,
-// your app should display a prompt that will let the manager
-// "add more" of any item currently in the store.
 function addExistence(){
     var query = connection.query(
 		"UPDATE products SET ? WHERE ?",
@@ -170,7 +233,7 @@ function checkMenuOption () {
     if (info.menuOpt === "View Products for Sale") processProducts(); else
     if (info.menuOpt === "View Low Inventory"    ) processLowInv();   else
     if (info.menuOpt === "Add to Inventory"      ) processAddInv();   else
-    if (info.menuOpt === "Add New Product"       ) {}; 
+    if (info.menuOpt === "Add New Product"       ) processNewProd(); 
 };
 
 function connectDb() {

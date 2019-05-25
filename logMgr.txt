@@ -244,3 +244,44 @@ Quantity updated.
 ||   9  ||  Impresora Konica                          ||   19741  ||      2  ||
 ||  10  ||  Cafetera                                  ||    3456  ||     19  ||
 ===============================================================================
+connected as id 31
+Not a valid price.connected as id 32
+Not a valid price.connected as id 33
+Not a valid quantity.connected as id 34
+Not a valid price.connected as id 35
+connected as id 4
+
+Product added.
+
+===============================================================================
+||  id  ||                product                     ||   price  ||  stock  ||
+===============================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||    104  ||
+||   2  ||  Camara de video                           ||    9876  ||     12  ||
+||   3  ||  Bicicleta de montaña                      ||   12345  ||      4  ||
+||   4  ||  Balon de basketbol                        ||     876  ||      6  ||
+||   5  ||  Scrable                                   ||     935  ||     11  ||
+||   6  ||  Uno                                       ||     823  ||     15  ||
+||   7  ||  Samsung S10                               ||   23456  ||     11  ||
+||   8  ||  HP Pavillion                              ||   18765  ||      3  ||
+||   9  ||  Impresora Konica                          ||   19741  ||      2  ||
+||  10  ||  Cafetera                                  ||    3456  ||     19  ||
+||  11  ||  Zapatos para descanso                     ||     847  ||      5  ||
+===============================================================================
+connected as id 5
+
+===============================================================================
+||  id  ||                product                     ||   price  ||  stock  ||
+===============================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||    104  ||
+||   2  ||  Camara de video                           ||    9876  ||     12  ||
+||   3  ||  Bicicleta de montaña                      ||   12345  ||      4  ||
+||   4  ||  Balon de basketbol                        ||     876  ||      6  ||
+||   5  ||  Scrable                                   ||     935  ||     11  ||
+||   6  ||  Uno                                       ||     823  ||     15  ||
+||   7  ||  Samsung S10                               ||   23456  ||     11  ||
+||   8  ||  HP Pavillion                              ||   18765  ||      3  ||
+||   9  ||  Impresora Konica                          ||   19741  ||      2  ||
+||  10  ||  Cafetera                                  ||    3456  ||     19  ||
+||  11  ||  Zapatos para descanso                     ||     847  ||      5  ||
+===============================================================================
