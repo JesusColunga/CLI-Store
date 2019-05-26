@@ -1,5 +1,5 @@
 // bamazonCustomer.js
-// 24/May/2019
+// 25/May/2019
 
 // GLOBAL VARIABLES
 //============================================================================ Variables
@@ -56,9 +56,14 @@ function writeLog (strg) {
 function processUpdatedDb(resp){
     if (resp !== undefined) {
         console.log(resp.changedRows + " product updated!\n");
+        writeLog(resp.changedRows + " product updated!\n");
         console.log(
             "\nTotal amount of your order: $" + 
             (order.orderedQty * order.price)
+        );
+        writeLog(
+            "\nTotal amount of your order: $" + 
+            (order.orderedQty * order.price)  + "\n"
         );
     };
     connection.end();
@@ -86,7 +91,7 @@ function processCustomerOrder (){
              order.product_name         +
              "\n";
     console.log(st);
-    writeLog(st);
+    writeLog(st + "\n");
     processSubtractQtySold();
 };
 
@@ -94,11 +99,13 @@ function processExistenceValidate (reg){
     if (reg.length <= 0) {
         connection.end();
         console.log("Error identifing the product Id you typed.");
+        writeLog("Error identifing the product Id you typed.\n");
     } else {
         order.product_name = reg[0].product_name;
         if (order.orderedQty <= 0) {
             connection.end();
             console.log("Quantity must be grater than cero.");
+            writeLog("Quantity must be grater than cero.\n");
         } else {
             order.stock_quantity = parseFloat(reg[0].stock_quantity);
             order.price = parseFloat(reg[0].price);
@@ -107,6 +114,7 @@ function processExistenceValidate (reg){
             } else {
                 connection.end();
                 console.log("There is Insufficient Quantity of the product for your request!");
+                writeLog("There is Insufficient Quantity of the product for your request!\n");
             };
         }
     };
@@ -128,12 +136,14 @@ function askOrder(){
       .prompt (q2)
       .then ( function (resp) { 
           order.item_id = resp.q2Id;
+          writeLog("Product id selected : " + order.item_id + "\n");
+          writeLog("Quantity ordered    : " + resp.q2Qty + "\n");
           if ( !isNaN(resp.q2Qty) ) {
             order.orderedQty = parseFloat(resp.q2Qty);
             checkExistence(); 
           } else {
               console.log("Not a valid quantity.");
-              writeLog("Not a valid quantity.");
+              writeLog("Not a valid quantity.\n");
               connection.end();
           }
         } );
@@ -166,7 +176,7 @@ function showCatalog(res){
     res.forEach(showProducts);
     strCat += s + "\n" + "=".repeat(68) + "\n";
     console.log(strCat);
-    writeLog(strCat);
+    writeLog(strCat + "\n");
 };
 
 function processProducts(){

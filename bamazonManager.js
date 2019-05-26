@@ -75,7 +75,6 @@ function writeLog (strg) {
 // - - - - - - - - - - - - - - Add New Product
 function queryNewProd(){
     var query = connection.query(
-        // agregar el producto nuevo - "UPDATE products SET ? WHERE ?",
         "INSERT INTO products SET ?",
 		{ product_name    : info.q2ProdName,
           department_name : info.q2Dep,
@@ -95,6 +94,9 @@ function processNewProd(){
     inquirer
       .prompt (q2)
       .then ( function (resp) { 
+          writeLog("Product to register : " + resp.q2ProdName + "\n");
+          writeLog("Department          : " + resp.q2Dep      + "\n");
+          writeLog("Price               : " + resp.q2Price    + "\n");
           info.q2ProdName = resp.q2ProdName;
           info.q2Dep      = resp.q2Dep;
 
@@ -139,6 +141,7 @@ function processExistenceValidate (reg){
     if (reg.length <= 0) {
         connection.end();
         console.log("Error identifing the product Id you typed.");
+        writeLog("Error identifing the product Id you typed.\n");
     } else {
         info.stock_quantity = parseFloat(reg[0].stock_quantity);
         addExistence();
@@ -160,6 +163,8 @@ function processAddInv(){
     inquirer
       .prompt (q1)
       .then ( function (resp) { 
+          writeLog("Product id selected : " + resp.q1Id  + "\n");
+          writeLog("Quantity to add     : " + resp.q1Qty + "\n");
           info.q1Id = resp.q1Id;
           if ( !isNaN(resp.q1Qty) ) {
             info.q1Qty = parseFloat(resp.q1Qty);
@@ -230,6 +235,7 @@ function processProducts(){
 
 // - - - - - - - - - - - - - - Menu
 function checkMenuOption () {
+    writeLog(info.menuOpt + "\n")
     if (info.menuOpt === "View Products for Sale") processProducts(); else
     if (info.menuOpt === "View Low Inventory"    ) processLowInv();   else
     if (info.menuOpt === "Add to Inventory"      ) processAddInv();   else
