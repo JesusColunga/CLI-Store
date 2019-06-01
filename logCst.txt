@@ -90,3 +90,186 @@ Description: Balon de basketbol
 1 product updated!
 
 Total amount of your order: $1752
+connected as id 4
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+Quantity ordered    : 1
+Product id selected : 2
+
+Processing your order:
+Quantity:    1
+Product Id:  2
+Description: Camara de video
+
+1 product updated!
+
+Total amount of your order: $9876
+connected as id 5
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+connected as id 8
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+Product id selected : 2
+Quantity ordered    : 1
+
+Processing your order:
+Quantity:    1
+Product Id:  2
+Description: Camara de video
+
+1 product updated!
+
+Total amount of your order: $9876
+connected as id 11
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+Product id selected : 2
+Quantity ordered    : 1
+
+Processing your order:
+Quantity:    1
+Product Id:  2
+Description: Camara de video
+
+1 product updated!
+
+Total amount of your order: $9876
+connected as id 13
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+Product id selected : NaN
+Quantity ordered    : 1
+connected as id 15
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+====================================================================
+
+Product id selected : 2
+Quantity ordered    : 1
+
+Processing your order:
+Quantity:    1
+Product Id:  2
+Description: Camara de video
+
+1 product updated!
+
+Total amount of your order: $9876
+connected as id 20
+
+====================================================================
+||  id  ||                product                     ||   price  ||
+====================================================================
+||   1  ||  Camara fotografica                        ||    5678  ||  
+||   2  ||  Camara de video                           ||    9876  ||  
+||   3  ||  Bicicleta de montaña                      ||   12345  ||  
+||   4  ||  Balon de basketbol                        ||     876  ||  
+||   5  ||  Scrable                                   ||     935  ||  
+||   6  ||  Uno                                       ||     823  ||  
+||   7  ||  Samsung S10                               ||   23456  ||  
+||   8  ||  HP Pavillion                              ||   18765  ||  
+||   9  ||  Impresora Konica                          ||   19741  ||  
+||  10  ||  Cafetera                                  ||    3456  ||  
+||  11  ||  Zapatos para descanso                     ||     847  ||  
+||  12  ||  HP Deskjet                                ||    4312  ||  
+||  13  ||  New Product No. 234                       ||     777  ||  
+====================================================================
+
+Product id selected : 1
+Quantity ordered    : NaN
+Not a valid quantity.
